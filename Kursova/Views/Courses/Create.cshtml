@@ -1,0 +1,70 @@
+﻿@model Kursova.ViewModels.Courses.CreateVM
+
+@{
+    ViewData["Title"] = "Create Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Course</h1>
+<!--<hr />
+<div class="row">
+    <div class="col-md-4">
+        <fieldset>
+            <legend>Create</legend>
+            <form action="/Courses/Create" method="post">
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-1">Title:</div>
+                        <div class="col-2">@Html.TextBoxFor(m => m.Title)</div>
+                        <div class="col-2">@Html.ValidationMessageFor(m => m.Title)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">Credits:</div>
+                        <div class="col-2">@Html.TextBoxFor(m => m.Credits)</div>
+                        <div class="col-2">@Html.ValidationMessageFor(m => m.Credits)</div>
+                    </div>-->
+@*<div class="row">
+        <div class="col-3">@Html.ValidationMessage("AuthenticationFailed")</div>
+    </div>*@
+<!--<div class="row">
+                        <div class="col-3">
+                            <input type="submit" value="Create" />
+                            <a href="/Courses/Index">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>-->
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Credits" class="control-label"></label>
+                <input asp-for="Credits" class="form-control" />
+                <span asp-validation-for="Credits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        @*<div class="col-md-4">
+                <a asp-action="Index">Back to List</a>
+            </div>*@
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

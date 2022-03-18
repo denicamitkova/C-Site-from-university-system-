@@ -1,0 +1,83 @@
+﻿@model Kursova.ViewModels.Courses.ShareVM
+@using Kursova.Entities;
+
+@{
+    ViewData["Title"] = "Share";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Share</h1>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+
+@*<h1>Courses Management View</h1>*@
+@*<a href="/Courses/Create">New</a>*@
+
+<div class="grid">
+    <div class="col-3">
+        <h3>Shared Courses:</h3>
+        <span class="col-2">Title: </span> @Model.Courses.Title <br />
+        <span class="col-2">Credits: </span> @Model.Courses.Credits <br />
+    </div>
+    <hr />
+    <div class="row">
+        <h2>This item is shared with:</h2>
+    </div>
+    <div class="row">
+        <div class="col-2">First Name</div>
+        <div class="col-2">Last Name</div>
+        <div class="col-2">Enrollment</div>
+    </div>
+    @foreach (Student item in Model.SharedWith)
+    {
+        <div class="row">
+            <div class="col-2">@item.FirstName</div>
+            <div class="col-2">@item.LastName</div>
+            <div class="col-3">@item.Enrollment</div>
+            <div class="col-2">
+                <a href="/Courses/RevokeAccess?StudentId=@item.Id&CourseId=@Model.Courses.CourseId">Revoke Access</a>
+            </div>
+        </div>
+    }
+
+    <hr />
+    <div class="row">
+        <form action="/Courses/Share" method="post">
+            <input type="hidden" name="CourseId" value="@Model.Courses.CourseId" />
+            <div class="col">Share With:</div><br />
+            <div class="col-3">
+                <select name="StudentId">
+                    @foreach (Student item in Model.Students)
+                    {
+                        <option value="@item.Id">@item.FirstName @item.LastName</option>
+                    }
+                </select>
+            </div><br />
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Share" />
+            </div>
+        </form>
+    </div>
+</div>
+

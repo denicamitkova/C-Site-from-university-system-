@@ -1,0 +1,38 @@
+﻿@model Kursova.ViewModels.Students.EditVM
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Student</h1>
+
+<div class="grid">
+    <form asp-action="Edit">
+        @Html.HiddenFor(m => m.Id)
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label">First Name</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label">Last Name</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Enrollment" class="control-label">Enrollment</label>
+            <input asp-for="Enrollment" class="form-control" />
+            <span asp-validation-for="Enrollment" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-3">@Html.ValidationMessage("AuthenticationFailed")</div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Edit" class="btn btn-primary" />
+        </div>
+    </form>
+    <div class="col-md-4">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model Kursova.ViewModels.Courses.IndexVM;
+@using Kursova.Entities;
+@{
+    ViewData["Title"] = "Courses Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Courses Management</h1>
+
+<div class="form-group">
+    <a href="/Courses/Create"><input type="button" class="btn btn-primary" value="Create New Course" /></a>
+</div>
+
+<div class="grid">
+    <div class="row">
+        <div class="col-2">Title</div>
+        <div class="col-2">Credits</div>
+    </div>
+    <hr />
+    <div class="col-sm">
+        @foreach (Course item in Model.Items)
+        {
+            <div class="row">
+                <div class="col-2">@item.Title</div>
+                <div class="col-2">@item.Credits</div>
+                <div class="col-2">
+                    <a href="/Courses/Edit?id=@item.CourseId">Edit</a>
+                    <span>|</span>
+                    <a href="/Courses/Share?id=@item.CourseId">Share</a>
+                    <span>|</span>
+                    <a href="/Courses/Delete?id=@item.CourseId">Delete</a>
+                </div>
+            </div><hr />
+        }
+    </div>
+</div>
+

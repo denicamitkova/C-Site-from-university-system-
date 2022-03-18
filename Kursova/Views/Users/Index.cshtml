@@ -1,0 +1,90 @@
+﻿@model Kursova.ViewModels.Users.IndexVM
+@using Kursova.Entities;
+@{
+    ViewData["Title"] = "Users Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Dashboard</h1>
+<br />
+<br />
+<h2>Users</h2>
+<div class="grid">
+    <div class="row">
+        <div class="col-2">First Name</div>
+        <div class="col-2">Last Name</div>
+        <div class="col-2">Username</div>
+    </div>
+    <hr />
+    <div class="col-sm">
+        @foreach (User item in Model.Items)
+        {
+            <div class="row">
+                <div class="col-2">@item.FirstName</div>
+                <div class="col-2">@item.LastName</div>
+                <div class="col-3">@item.Username</div>
+            </div><hr />
+        }
+    </div>
+
+    <br /><br />
+    <h2>Students</h2>
+    <div class="grid">
+        <div class="row">
+            <div class="col-2">First Name</div>
+            <div class="col-2">Last Name</div>
+            <div class="col-2">Enrollments</div>
+        </div>
+        <hr />
+        <div class="col-sm">
+            @foreach (Student item in Model.StudentItems)
+            {
+                <div class="row">
+                    <div class="col-2">@item.FirstName</div>
+                    <div class="col-2">@item.LastName</div>
+                    <div class="col-3">@item.Enrollment</div>
+                </div><hr />
+            }
+        </div>
+    </div>
+
+    <br /><br />
+    <h2>Courses</h2>
+    <div class="grid">
+        <div class="row">
+            <div class="col-2">Title</div>
+            <div class="col-2">Credits</div>
+        </div>
+        <hr />
+        <div class="col-sm">
+            @foreach (Course item in Model.CourseItems)
+            {
+                <div class="row">
+                    <div class="col-2">@item.Title</div>
+                    <div class="col-2">@item.Credits</div>
+                </div><hr />
+            }
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<h2>Enrollment</h2>
+<div class="grid">
+    <div class="row">
+        <div class="col-2">Students</div>
+        <div class="col-2">Courses</div>
+    </div>
+    <hr />
+    <div class="col-sm">
+        @foreach (Enrollment item in Model.EnrollmentItems)
+        {
+            <div class="row">
+                <div class="col-2">@item.Student.FirstName @item.Student.LastName</div>
+                <div class="col-2">@item.Course.Title</div>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
